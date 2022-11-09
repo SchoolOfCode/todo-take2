@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import style from "./UpdatePage.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-const UpdatePage = (data: [{ id: number; todo: string }]) => {
+const UpdatePage = (data: { data: [{ id: number; todo: string }] }) => {
+  console.log(data);
   const router = useRouter();
   const [upDatedTodo, setUpdateTodo] = useState("");
 
   const upDate = () => {
     if (!upDatedTodo) {
-      console.log("please enter some text");
       return;
     }
     axios
@@ -27,19 +28,28 @@ const UpdatePage = (data: [{ id: number; todo: string }]) => {
 
   return (
     <div>
-      <button type="button" onClick={() => router.push("../")}>
-        Go back
-      </button>
-      <h1>Edit Todo</h1>
-      <section>
-        <p>{data.data[0].todo}</p>
+      <h1 className={style.UpdateTitle}>Edit Todo</h1>
+      <section className={style.UpdateWrapper}>
+        <p className={style.oldData}>Old data: {data.data[0].todo}</p>
+        {upDatedTodo && <p>Updated data: {upDatedTodo}</p>}
         <input
           placeholder={data.data[0].todo}
           onChange={(e) => setUpdateTodo(e.target.value)}
         ></input>
-        <button type="button" onClick={upDate}>
-          Update
-        </button>
+        <div className={style.buttonWrapper}>
+          {upDatedTodo && (
+            <button className={style.saveButton} type="button" onClick={upDate}>
+              save
+            </button>
+          )}
+          <button
+            className={style.backButton}
+            type="button"
+            onClick={() => router.push("../")}
+          >
+            go back
+          </button>
+        </div>
       </section>
     </div>
   );
@@ -49,13 +59,12 @@ export default UpdatePage;
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
   const todoToFind = context.params.todos;
-  //console.log(todoToFind);
 
   const res = await fetch(
     `https://todo-backend-bc5b.vercel.app/todo/${todoToFind}`
   );
   const data = await res.json();
-  console.log(data);
+
   // Pass data to the page via props
   return { props: { data } };
 }

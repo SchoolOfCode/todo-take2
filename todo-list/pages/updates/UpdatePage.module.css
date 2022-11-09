@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+
+.UpdateTitle{
+    width:50%;
+    margin: auto;
+    text-align: center;
+    padding-top:1em;
+    padding-bottom:1em;
+    font-size: 3em;
+    font-family: 'Quicksand', sans-serif;
+    color:#001B2E;
+
+}
+
+.UpdateWrapper{
+
+    width:50%;
+    margin: auto;
+    text-align: center;
+
+
+
+
+
+}
+.UpdateWrapper p{
+
+    font-size: 2em;
+    font-family: 'Quicksand', sans-serif;
+
+}
+.oldData{
+
+    color: orange;
+}
+.UpdateWrapper input{
+
+    font-size: 2em;
+    font-family: 'Quicksand', sans-serif;
+width:50vw;
+border-radius: 15px;
+  padding:1em;
+
+
+
+
+
+}
+.buttonWrapper{
+margin:0 auto;
+/*border:1px solid dodgerblue;*/
+margin-top: 3em;
+width:30vw;
+display: flex;
+justify-content: space-around;
+padding:1em;
+}
+.saveButton{
+
+    font-size: 1EM;font-family: 'Quicksand', sans-serif;
+    border:none;
+     background-color: #ADB6C4;
+     padding:1em;
+     color:#001B2E;
+
+
+
+}
+ .backButton{
+    font-size: 1EM;font-family: 'Quicksand', sans-serif;
+    border:none;
+     font-size: 1EM;
+     font-family: 'Quicksand', sans-serif;
+     border:none;
+      background-color: #FFC49B;
+      color:#001B2E;
+
+
+
+}
