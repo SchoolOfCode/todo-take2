@@ -36,6 +36,7 @@ export default function Home() {
     if (!userInput) {
       return;
     }
+    setConf(true);
     const todoToPost = userInput;
     axios
       .post("https://todo-backend-bc5b.vercel.app/todo", {
@@ -46,12 +47,13 @@ export default function Home() {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      })
+      .then(() => setConf(false));
   };
 
   const deleteTodo = (id: number) => {
     console.log(id);
-    setConf(true);
+
     const filterArray = apiData!.filter(
       (item: { id: number }) => item.id != id
     );
@@ -63,8 +65,7 @@ export default function Home() {
       .then(function (response) {})
       .catch(function (error) {
         console.log(error);
-      })
-      .then(() => setConf(false));
+      });
   };
   return (
     <div className={styles.container}>
@@ -83,7 +84,7 @@ export default function Home() {
           onChange={(e) => setUserInput(e.target.value)}
           value={userInput}
         ></input>
-
+        <Confetti active={conf} />
         <button type={"submit"}>Add your todo+</button>
       </form>
       <section className={styles.todoWrapper}>
@@ -99,7 +100,7 @@ export default function Home() {
                   {" "}
                   delete
                 </button>
-                <Confetti active={conf} />
+                <div></div>
                 <button
                   onClick={(e) => {
                     e.preventDefault();

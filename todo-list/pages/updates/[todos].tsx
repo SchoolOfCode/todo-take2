@@ -31,7 +31,7 @@ const UpdatePage = (data: { data: [{ id: number; todo: string }] }) => {
       <h1 className={style.UpdateTitle}>Edit Todo</h1>
       <section className={style.UpdateWrapper}>
         <p className={style.oldData}>Old data: {data.data[0].todo}</p>
-        {upDatedTodo && <p>Updated data: {upDatedTodo}</p>}
+
         <input
           placeholder={data.data[0].todo}
           onChange={(e) => setUpdateTodo(e.target.value)}
