@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Typescript Todo List</title>
         <meta name="description" content="FullStack TypeScript Todo" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
