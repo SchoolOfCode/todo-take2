@@ -160,14 +160,21 @@ width:90vw
   
 }
 
-@media (max-width:403px) {
+@media (max-width:466px) {
 
 
 .title{
 
   width: 90vw;
 }
+.noTodoMessage{
 
+
+
+margin-bottom: -50vh;
+text-align: center;
+font-size: 2em;
+}
 
 
 }
