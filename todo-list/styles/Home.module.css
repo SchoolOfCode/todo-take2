@@ -91,3 +91,83 @@ border:none;
 
 
 }
+
+.errorMessage{
+
+  /*border: 1px solid #001B2E;*/
+  font-size: 1EM;font-family: 'Quicksand', sans-serif;
+  width:fit-content;
+  margin:0 auto;
+  margin-top: 25vh;
+}
+
+.noTodoMessage{
+
+/*border:1px solid lime;*/
+width:fit-content;
+margin:0 auto;
+margin-top: 25vh;
+font-size: 3EM;
+font-family: 'Quicksand', sans-serif;
+
+
+
+
+}
+
+@media (max-width:820px) {
+
+
+.inputForm{
+
+
+width:90vw;
+
+
+justify-content: center;
+}
+
+
+.inputForm input{
+  border-radius: 15px;
+    padding:0em;
+   
+
+  }
+
+
+.todoWrapper{
+
+display: grid;
+grid-template-columns: 1fr;
+margin: 0auto;
+
+width:90vw;
+
+
+}
+
+.displayCard{
+
+width:90vw
+
+
+
+
+
+}
+
+  
+}
+
+@media (max-width:403px) {
+
+
+.title{
+
+  width: 90vw;
+}
+
+
+
+}

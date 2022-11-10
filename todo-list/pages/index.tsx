@@ -12,21 +12,21 @@ export default function Home() {
   const [response, setResponse] = useState({});
   const [conf, setConf] = useState(false);
   const router = useRouter();
-
-  console.log(apiData);
+  const [error, setError] = useState("");
+  console.log(error);
 
   useEffect(() => {
     axios
       .get("https://todo-backend-bc5b.vercel.app/todo")
       .then(function (response) {
         // handle success
-        console.log(response.data);
+        // console.log(response.data);
         setApiData(response.data);
         setUserInput("");
       })
       .catch(function (error: any) {
         // handle error
-        console.log(error);
+        setError(error.message);
       })
       .finally(function () {});
   }, [response]);
@@ -84,37 +84,47 @@ export default function Home() {
           onChange={(e) => setUserInput(e.target.value)}
           value={userInput}
         ></input>
-        <Confetti active={conf} />
+        {apiData.length < 1 && <Confetti active={conf} />}
         <button type={"submit"}>Add your todo+</button>
       </form>
+      {error && (
+        <h2 className={styles.errorMessage}>
+          Oops looks where having a problem with our servers, please refresh or
+          try again later...
+        </h2>
+      )}
+      {!error && !apiData.length && (
+        <h1 className={styles.noTodoMessage}>Add your first todo...</h1>
+      )}
       <section className={styles.todoWrapper}>
-        {apiData.map((item: { id: number; todo: string }) => {
-          return (
-            <div className={styles.displayCard}>
-              <p>{item.todo}</p>
-              <div className={styles.buttonContainer}>
-                <button
-                  className={styles.deleteButton}
-                  onClick={() => deleteTodo(item.id)}
-                >
-                  {" "}
-                  delete
-                </button>
-                <div></div>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    router.push(`./updates/${item.id}`);
-                  }}
-                  className={styles.editButton}
-                >
-                  {" "}
-                  update
-                </button>
+        {!error &&
+          apiData.map((item: { id: number; todo: string }) => {
+            return (
+              <div className={styles.displayCard}>
+                <p>{item.todo}</p>
+                <div className={styles.buttonContainer}>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => deleteTodo(item.id)}
+                  >
+                    {" "}
+                    delete
+                  </button>
+                  <div></div>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push(`./updates/${item.id}`);
+                    }}
+                    className={styles.editButton}
+                  >
+                    {" "}
+                    update
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </section>
     </div>
   );

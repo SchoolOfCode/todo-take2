@@ -3,7 +3,6 @@ import style from "./UpdatePage.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 const UpdatePage = (data: { data: [{ id: number; todo: string }] }) => {
-  console.log(data);
   const router = useRouter();
   const [upDatedTodo, setUpdateTodo] = useState("");
 
@@ -16,7 +15,7 @@ const UpdatePage = (data: { data: [{ id: number; todo: string }] }) => {
         todo: upDatedTodo,
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
         console.log(error);
