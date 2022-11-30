@@ -89,7 +89,7 @@ export default function Home() {
       </form>
       {error && (
         <h2 className={styles.errorMessage}>
-          Oops looks where having a problem with our servers, please refresh or
+          Oops looks we're having a problem with our servers, please refresh or
           try again later...
         </h2>
       )}
