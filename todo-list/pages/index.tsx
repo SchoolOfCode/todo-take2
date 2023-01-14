@@ -39,7 +39,7 @@ export default function Home() {
     setConf(true);
     const todoToPost = userInput;
     axios
-      .post("https://todo-backend-bc5b.vercel.app/todo", {
+      .post("https://todo-backend-murex.vercel.app/todo", {
         todo: todoToPost,
       })
       .then(function (response) {
